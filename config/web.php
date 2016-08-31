@@ -11,8 +11,14 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'b2ObPbBFXkUfb7N27O_FLIaNGIKbsy2h',
         ],
+        'session' => [
+            'class' => 'yii\web\DbSession',
+             'db' => 'db',
+             'sessionTable' => 'session',
+        ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+//            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DbCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -44,7 +50,13 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'country',
+                    'extraPatterns' => [
+                        'GET search' => 'search',
+                    ],
+                ],
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Country;
+use app\models\CountryForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,6 +63,27 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Displays mypage.
+     *
+     * @return string
+     */
+    public function actionCreatecountry()
+    {
+        $countryForm = new CountryForm();
+        if ($countryForm === null) {
+            throw new NotFoundHttpException;
+        }
+        if (Yii::$app->request->post('Country') && $countryForm->createCountry(Yii::$app->request->post('Country'))) {
+            Yii::$app->session->setFlash('createCountrySubmitted');
+        }
+
+        $model = new Country();
+        return $this->render('createcountry', [
+            'model' => $model
+        ]);
     }
 
     /**

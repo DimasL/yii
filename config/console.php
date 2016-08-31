@@ -12,7 +12,10 @@ $config = [
     'controllerNamespace' => 'app\commands',
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+//            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DbCache',
+             'db' => 'db',
+             'cacheTable' => 'cache',
         ],
         'log' => [
             'targets' => [
@@ -22,6 +25,15 @@ $config = [
                 ],
             ],
         ],
+        'session' => array(
+            'class' => 'yii\web\DbSession',
+            'db' => 'db',
+            'autoStart' => false,
+            'connectionID' => 'db',
+            'sessionTable' => 'session',
+            'sessionTableName' => 'session',
+            'autoCreateSessionTable' => false
+        ),
         'db' => $db,
     ],
     'params' => $params,

@@ -115,7 +115,11 @@ class CountryController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Country::findOne($id)) !== null) {
+        $model = Country::getDb()->cache(function () use ($id) {
+            return Country::findOne($id);
+        }, CACHE_TIMEOUT);
+
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
