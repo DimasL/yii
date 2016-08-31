@@ -11,14 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php if (Yii::$app->session->hasFlash('createCountrySubmitted')): ?>
-
-        <div class="alert alert-success">
-            New country has been created.
-        </div>
-
-    <?php endif; ?>
-
     <?php
     $form = ActiveForm::begin([
     'id' => 'country-form',

@@ -73,11 +73,8 @@ class SiteController extends Controller
     public function actionCreatecountry()
     {
         $countryForm = new CountryForm();
-        if ($countryForm === null) {
-            throw new NotFoundHttpException;
-        }
         if (Yii::$app->request->post('Country') && $countryForm->createCountry(Yii::$app->request->post('Country'))) {
-            Yii::$app->session->setFlash('createCountrySubmitted');
+            Yii::$app->session->setFlash('success');
         }
 
         $model = new Country();
