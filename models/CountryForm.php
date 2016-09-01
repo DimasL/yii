@@ -21,7 +21,7 @@ class CountryForm extends Model
     public function rules()
     {
         return [
-            [['title', 'slug', 'sort_order'], 'required'],
+            [['title', 'slug'], 'required'],
         ];
     }
 

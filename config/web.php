@@ -20,9 +20,17 @@ $config = [
 //            'class' => 'yii\caching\FileCache',
             'class' => 'yii\caching\DbCache',
         ],
-        'user' => [
+        /*'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+        ],*/
+        'user' => [
+            'class' => 'webvimark\modules\UserManagement\components\UserConfig',
+
+            // Comment this if you don't want to record user logins
+            'on afterLogin' => function($event) {
+                \webvimark\modules\UserManagement\models\UserVisitLog::newVisitor($event->identity->id);
+            }
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -65,6 +73,22 @@ $config = [
 
     ],
     'params' => $params,
+    'modules'=>[
+        'user-management' => [
+            'class' => 'webvimark\modules\UserManagement\UserManagementModule',
+
+            // 'enableRegistration' => true,
+
+            // Here you can set your handler to change layout for any controller or action
+            // Tip: you can use this event in any module
+            'on beforeAction'=>function(yii\base\ActionEvent $event) {
+                if ( $event->action->uniqueId == 'user-management/auth/login' )
+                {
+                    $event->action->controller->layout = 'loginLayout.php';
+                };
+            },
+        ],
+    ],
     'aliases' => [
         '@views' => dirname(__DIR__) . '/views'
     ]
