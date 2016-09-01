@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Country;
 use app\models\CountryForm;
+use app\models\SearchCountry;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -66,7 +67,24 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays mypage.
+     * Displays create country page.
+     *
+     * @return string
+     */
+    public function actionIndexcountry()
+    {
+        $searchModel = new SearchCountry();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('country_index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
+    /**
+     * Displays create country page.
      *
      * @return string
      */
@@ -78,9 +96,59 @@ class SiteController extends Controller
         }
 
         $model = new Country();
-        return $this->render('createcountry', [
+        return $this->render('country_create', [
             'model' => $model
         ]);
+    }
+
+    /**
+     * Displays read country page.
+     *
+     * @return string
+     */
+    public function actionReadcountry($id)
+    {
+        $model = Country::findOne($id);
+        return $this->render('country_read', [
+            'model' => $model
+        ]);
+    }
+
+    /**
+     * Displays update country page.
+     *
+     * @return string
+     */
+    public function actionUpdatecountry($id)
+    {
+        $model = Country::findOne($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success');
+            return $this->redirect(['readcountry', 'id' => $model->id]);
+        } else {
+            if (Yii::$app->request->post()) {
+                Yii::$app->session->setFlash('error');
+            }
+            return $this->render('country_update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Delete country.
+     *
+     * @return string
+     */
+    public function actionDeletecountry($id)
+    {
+        if (Country::findOne($id)->delete()) {
+            Yii::$app->session->setFlash('success');
+        } else {
+            Yii::$app->session->setFlash('error');
+        }
+        return $this->redirect(['indexcountry']);
     }
 
     /**
