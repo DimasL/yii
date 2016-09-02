@@ -95,7 +95,7 @@ class SiteController extends Controller
     {
         $countryForm = new CountryForm();
         if (Yii::$app->request->post('Country') && $countryForm->createCountry(Yii::$app->request->post('Country'))) {
-            Yii::$app->session->setFlash('success');
+            Yii::$app->session->setFlash('success', 'Success');
         }
 
         $model = new Country();
@@ -127,11 +127,11 @@ class SiteController extends Controller
         $model = Country::findOne($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success');
+            Yii::$app->session->setFlash('success', 'Success');
             return $this->redirect(['readcountry', 'id' => $model->id]);
         } else {
             if (Yii::$app->request->post()) {
-                Yii::$app->session->setFlash('error');
+                Yii::$app->session->setFlash('error', 'Error.');
             }
             return $this->render('country_update', [
                 'model' => $model,
@@ -147,9 +147,9 @@ class SiteController extends Controller
     public function actionDeletecountry($id)
     {
         if (Country::findOne($id)->delete()) {
-            Yii::$app->session->setFlash('success');
+            Yii::$app->session->setFlash('success', 'Success');
         } else {
-            Yii::$app->session->setFlash('error');
+            Yii::$app->session->setFlash('error', 'Error.');
         }
         return $this->redirect(['indexcountry']);
     }
