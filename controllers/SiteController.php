@@ -14,6 +14,9 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+
+    public $freeAccessActions = ['index', 'about', 'contact', 'indexcountry', 'readcountry'];
+
     /**
      * @inheritdoc
      */

@@ -14,9 +14,9 @@ class FlashMessageWidget extends Widget
         parent::init();
         $this->message = '';
         if (\Yii::$app->session->hasFlash('success')):
-            $this->message = '<div class="alert alert-success">' . \Yii::$app->session->getFlash('success') . '</div>';
+            $this->message = '<div class="alert alert-success text-center">' . \Yii::$app->session->getFlash('success') . '</div>';
         elseif (\Yii::$app->session->hasFlash('error')):
-            $this->message = '<div class="alert alert-error">' . \Yii::$app->session->getFlash('error') . '</div>';
+            $this->message = '<div class="alert alert-error text-center">' . \Yii::$app->session->getFlash('error') . '</div>';
         endif;
     }
 

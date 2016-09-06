@@ -4,23 +4,24 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\widgets\ActiveForm;
+use \webvimark\modules\UserManagement\models\User;
 
-$this->title = 'Custom Page (create country)';
+$this->title = 'Country';
+$this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['indexcountry']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['updatecountry', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['deletecountry', 'id' => $model->id], [
+        <?= User::canRoute('/site/updatecountry') ? Html::a('Update', ['updatecountry', 'id' => $model->id], ['class' => 'btn btn-primary']) : null ?>
+        <?= User::canRoute('/site/updatecountry') ? Html::a('Delete', ['deletecountry', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) : null ?>
     </p>
 
     <?= DetailView::widget([

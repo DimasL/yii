@@ -77,7 +77,7 @@ $config = [
         'user-management' => [
             'class' => 'webvimark\modules\UserManagement\UserManagementModule',
 
-            // 'enableRegistration' => true,
+             'enableRegistration' => true,
 
             // Here you can set your handler to change layout for any controller or action
             // Tip: you can use this event in any module
@@ -86,6 +86,10 @@ $config = [
                 {
                     $event->action->controller->layout = 'loginLayout.php';
                 };
+            },
+            'on afterRegistration' => function(\webvimark\modules\UserManagement\components\UserAuthEvent $event) {
+                // Here you can do your own stuff like assign roles, send emails and so on
+                \webvimark\modules\UserManagement\models\User::assignRole($event->user->id, 'User');
             },
         ],
     ],

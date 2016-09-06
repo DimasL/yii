@@ -9,7 +9,6 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\components\FlashMessageWidget;
-use webvimark\modules\UserManagement\models\User;
 
 AppAsset::register($this);
 ?>
@@ -35,59 +34,55 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-    <?php
-    NavBar::begin([
-        //'brandLabel' => 'My Company',
-        //'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-top',
-        ],
-    ]);
 
     echo \webvimark\modules\UserManagement\components\GhostNav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels' => false,
         'activateParents' => true,
 
         'items' => [
+            ['label' => 'Backend routes', 'items' => \webvimark\modules\UserManagement\UserManagementModule::menuItems()],
             [
-                'label' => 'Backend routes',
-                'items' => \webvimark\modules\UserManagement\UserManagementModule::menuItems()
-            ],
-            [
-                'label' => 'Frontend routes',
+                'label' => 'User Menu',
                 'items' => [
-                    ['label' => 'Login', 'url' => ['/user-management/auth/login']],
-                    ['label' => 'Logout', 'url' => ['/user-management/auth/logout']],
-                    ['label' => 'Registration', 'url' => ['/user-management/auth/registration']],
+                    Yii::$app->user->isGuest ? (
+                        ['label' => 'Login', 'url' => ['/user-management/auth/login']]
+                    ) : (
+                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')', 'url' => ['/user-management/auth/logout']]
+                    ),
+                    Yii::$app->user->isGuest ? (
+                        ['label' => 'Registration', 'url' => ['/user-management/auth/registration']]
+                    ) : (
+                        ''
+                    ),
                     ['label' => 'Change own password', 'url' => ['/user-management/auth/change-own-password']],
                     ['label' => 'Password recovery', 'url' => ['/user-management/auth/password-recovery']],
-                    ['label' => 'E-mail confirmation', 'url' => ['/user-management/auth/confirm-email']],
+                    ['label' => 'E-mail confirmation', 'url' => ['/user-management/auth/confirm-email']]
                 ],
             ],
         ],
 
+    ]);
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+            [
+                'label' => 'Site Menu',
+                'items' => [
+                    ['label' => 'Home', 'url' => ['/site/index']],
+                    ['label' => 'About', 'url' => ['/site/about']],
+                    ['label' => 'Contact', 'url' => ['/site/contact']],
+                    [
+                        'label' => 'Countries',
+                        'items' =>[
+                            ['label' => 'List', 'url' => ['/site/indexcountry']]
+                        ]
+
+                    ]
+                ]
+            ]
+        ],
     ]);
 
     NavBar::end();
@@ -104,9 +99,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        Footer
     </div>
 </footer>
 

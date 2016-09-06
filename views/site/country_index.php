@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use \webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchCountry */
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Country', ['createcountry'], ['class' => 'btn btn-success']) ?>
+        <?= User::canRoute('/site/createcountry') ? Html::a('Create Country', ['createcountry'], ['class' => 'btn btn-success']) : null ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -33,21 +34,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template'=>'{view}{update}{delete}',
                 'buttons'=>[
                     'view' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'readcountry/' . $model->id, [
+                        return User::canRoute('/site/readcountry/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'readcountry/' . $model->id, [
                             'title' => Yii::t('yii', 'Read'),
-                        ]);
+                        ]) : null;
 
                     },
                     'update' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', 'updatecountry/' . $model->id, [
+                        return User::canRoute('updatecountry/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', 'updatecountry/' . $model->id, [
                             'title' => Yii::t('yii', 'Update'),
-                        ]);
+                        ]) : null;
 
                     },
                     'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', 'deletecountry/' . $model->id, [
+                        return User::canRoute('deletecountry/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-trash"></span>', 'deletecountry/' . $model->id, [
                             'title' => Yii::t('yii', 'Update'),
-                        ]);
+                        ]) : null;
 
                     },
                 ]
