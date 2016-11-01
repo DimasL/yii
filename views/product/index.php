@@ -34,9 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template'=>'{view}{update}{delete}',
                 'buttons'=>[
                     'view' => function ($url, $model) {
-                        return User::canRoute('/site/readproduct/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'readproduct/' . $model->id, [
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'readproduct/' . $model->id, [
                             'title' => Yii::t('yii', 'Read'),
-                        ]) : null;
+                        ]);
 
                     },
                     'update' => function ($url, $model) {

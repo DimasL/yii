@@ -5,6 +5,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use \webvimark\modules\UserManagement\models\User;
+use \app\components\BuyPayPalWidget;
 
 $this->title = 'Product';
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['indexproduct']];
@@ -33,5 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
         ],
     ]) ?>
+
+    <?= BuyPayPalWidget::widget(['id' => $model->id]) ?>
 
 </div>
