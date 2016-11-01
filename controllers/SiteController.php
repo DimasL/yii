@@ -187,6 +187,7 @@ class SiteController extends Controller
         $productForm = new ProductForm();
         if (Yii::$app->request->post('Product') && $productForm->createProduct(Yii::$app->request->post('Product'))) {
             Yii::$app->session->setFlash('success', 'Success');
+            return $this->redirect(['site/indexproduct']);
         }
 
         $model = new Product();

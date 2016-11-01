@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= User::canRoute('/site/createproduct') ? Html::a('Create Product', ['createproduct'], ['class' => 'btn btn-success']) : null ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
