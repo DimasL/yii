@@ -65,10 +65,44 @@ $config = [
                         'GET search' => 'search',
                     ],
                 ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'product',
+                    'extraPatterns' => [
+                        'GET search' => 'search',
+                    ],
+                ],
                 '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
             ],
+        ],
+
+        'paypal'=> [
+            'class'        => 'marciocamello\Paypal',
+            'clientId'     => 'AR5dI_i7o6zydnMp3sGxD9IdDgmoBcOsrfF_iPmz38hmJ_tqlHYPPgJ_i8IoOtpxZPwIBM8Rn7HDyBmh',
+            'clientSecret' => 'EIwR2GBaR_L9ISNFHCNyCLX0Z23tmHoNFxpk6MWFwigGxVAWHO2P3OLpLKVqeCklxllJGSPg0cJW4BRV',
+            'isProduction' => false,
+            // This is config file for the PayPal system
+            'config'       => [
+                'http.ConnectionTimeOut' => 30,
+                'http.Retry'             => 1,
+//                'mode'                   => \marciocamello\Paypal::MODE_SANDBOX, // development (sandbox) or production (live) mode
+                'mode'                   => 'sandbox',
+                'log.LogEnabled'         => YII_DEBUG ? 1 : 0,
+                'log.FileName'           => '@runtime/logs/paypal.log',
+//                'log.LogLevel'           => \marciocamello\Paypal::LOG_LEVEL_FINE,
+                'log.LogLevel'           => 'FINE',
+            ]
+        ],
+        'cm' => [ // bad abbreviation of "CashMoney"; not sustainable long-term
+            'class' => 'app/components/CashMoney', // note: this has to correspond with the newly created folder, else you'd get a ReflectionError
+
+            // Next up, we set the public parameters of the class
+            'client_id' => 'AR5dI_i7o6zydnMp3sGxD9IdDgmoBcOsrfF_iPmz38hmJ_tqlHYPPgJ_i8IoOtpxZPwIBM8Rn7HDyBmh',
+            'client_secret' => 'EIwR2GBaR_L9ISNFHCNyCLX0Z23tmHoNFxpk6MWFwigGxVAWHO2P3OLpLKVqeCklxllJGSPg0cJW4BRV',
+            // You may choose to include other configuration options from PayPal
+            // as they have specified in the documentation
         ],
 
     ],

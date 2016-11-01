@@ -5,19 +5,19 @@ use yii\grid\GridView;
 use \webvimark\modules\UserManagement\models\User;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\SearchCountry */
+/* @var $searchModel app\models\SearchProduct */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Countries';
+$this->title = 'Products';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-index">
+<div class="product-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= User::canRoute('/site/createcountry') ? Html::a('Create Country', ['createcountry'], ['class' => 'btn btn-success']) : null ?>
+        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,32 +27,32 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
-            'slug',
-            'sort_order',
+            'description',
+            'price',
 
             ['class' => 'yii\grid\ActionColumn',
                 'template'=>'{view}{update}{delete}',
                 'buttons'=>[
                     'view' => function ($url, $model) {
-                        return User::canRoute('/site/readcountry/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'readcountry/' . $model->id, [
+                        return User::canRoute('/site/readproduct/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'readproduct/' . $model->id, [
                             'title' => Yii::t('yii', 'Read'),
                         ]) : null;
 
                     },
                     'update' => function ($url, $model) {
-                        return User::canRoute('updatecountry/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', 'updatecountry/' . $model->id, [
+                        return User::canRoute('updateproduct/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-pencil"></span>', 'updateproduct/' . $model->id, [
                             'title' => Yii::t('yii', 'Update'),
                         ]) : null;
 
                     },
                     'delete' => function ($url, $model) {
-                        return User::canRoute('deletecountry/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-trash"></span>', 'deletecountry/' . $model->id, [
+                        return User::canRoute('deleteproduct/' . $model->id) ? Html::a('<span class="glyphicon glyphicon-trash"></span>', 'deleteproduct/' . $model->id, [
                             'title' => Yii::t('yii', 'Update'),
                         ]) : null;
 
                     },
                 ]
             ],
-        ]
+        ],
     ]); ?>
 </div>

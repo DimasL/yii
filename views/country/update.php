@@ -1,20 +1,17 @@
 <?php
 
-use yii\helpers\Html;
-
 /* @var $this yii\web\View */
-/* @var $model app\models\Country */
 
-$this->title = 'Update Country: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+$this->title = 'Custom Page (create country)';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-update">
-
+<div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?= $this->render('..\country\form', [
         'model' => $model,
     ]) ?>
 

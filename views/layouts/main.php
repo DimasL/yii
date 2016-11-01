@@ -73,13 +73,8 @@ AppAsset::register($this);
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
-                    [
-                        'label' => 'Countries',
-                        'items' =>[
-                            ['label' => 'List', 'url' => ['/site/indexcountry']]
-                        ]
-
-                    ]
+                    ['label' => 'Countries', 'url' => ['/site/indexcountry']],
+                    ['label' => 'Products', 'url' => ['/site/indexproduct']],
                 ]
             ]
         ],

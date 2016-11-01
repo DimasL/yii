@@ -5,6 +5,9 @@ namespace app\controllers;
 use app\models\Country;
 use app\models\CountryForm;
 use app\models\SearchCountry;
+use app\models\Product;
+use app\models\ProductForm;
+use app\models\SearchProduct;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -15,7 +18,7 @@ use app\models\ContactForm;
 class SiteController extends Controller
 {
 
-    public $freeAccessActions = ['index', 'about', 'contact', 'indexcountry', 'readcountry'];
+    public $freeAccessActions = ['index', 'about', 'contact', 'indexcountry', 'readcountry', 'indexproduct', 'readproduct'];
 
     /**
      * @inheritdoc
@@ -82,7 +85,7 @@ class SiteController extends Controller
         $searchModel = new SearchCountry();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('country_index', [
+        return $this->render('..\country\index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -102,7 +105,7 @@ class SiteController extends Controller
         }
 
         $model = new Country();
-        return $this->render('country_create', [
+        return $this->render('..\country\create', [
             'model' => $model
         ]);
     }
@@ -115,7 +118,7 @@ class SiteController extends Controller
     public function actionReadcountry($id)
     {
         $model = Country::findOne($id);
-        return $this->render('country_read', [
+        return $this->render('..\country\read', [
             'model' => $model
         ]);
     }
@@ -136,7 +139,7 @@ class SiteController extends Controller
             if (Yii::$app->request->post()) {
                 Yii::$app->session->setFlash('error', 'Error.');
             }
-            return $this->render('country_update', [
+            return $this->render('..\country\update', [
                 'model' => $model,
             ]);
         }
@@ -155,6 +158,91 @@ class SiteController extends Controller
             Yii::$app->session->setFlash('error', 'Error.');
         }
         return $this->redirect(['indexcountry']);
+    }
+
+    /**
+     * Displays create product page.
+     *
+     * @return string
+     */
+    public function actionIndexproduct()
+    {
+        $searchModel = new SearchProduct();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('..\product\index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
+    /**
+     * Displays create product page.
+     *
+     * @return string
+     */
+    public function actionCreateproduct()
+    {
+        $productForm = new ProductForm();
+        if (Yii::$app->request->post('Product') && $productForm->createProduct(Yii::$app->request->post('Product'))) {
+            Yii::$app->session->setFlash('success', 'Success');
+        }
+
+        $model = new Product();
+        return $this->render('..\product\create', [
+            'model' => $model
+        ]);
+    }
+
+    /**
+     * Displays read product page.
+     *
+     * @return string
+     */
+    public function actionReadproduct($id)
+    {
+        $model = Product::findOne($id);
+        return $this->render('..\product\read', [
+            'model' => $model
+        ]);
+    }
+
+    /**
+     * Displays update product page.
+     *
+     * @return string
+     */
+    public function actionUpdateproduct($id)
+    {
+        $model = Product::findOne($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Success');
+            return $this->redirect(['readproduct', 'id' => $model->id]);
+        } else {
+            if (Yii::$app->request->post()) {
+                Yii::$app->session->setFlash('error', 'Error.');
+            }
+            return $this->render('..\product\update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Delete product.
+     *
+     * @return string
+     */
+    public function actionDeleteproduct($id)
+    {
+        if (Product::findOne($id)->delete()) {
+            Yii::$app->session->setFlash('success', 'Success');
+        } else {
+            Yii::$app->session->setFlash('error', 'Error.');
+        }
+        return $this->redirect(['indexproduct']);
     }
 
     /**

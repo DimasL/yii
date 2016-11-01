@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9b5f6283941f40106f36a4918ddacf66",
-    "content-hash": "e86f9daddc233fc003ee8fc716c03dd7",
+    "hash": "7b4e4d35f33e697df9b6524329687fdc",
+    "content-hash": "d0435d6e9e5587193eed54f1b478b3e1",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -197,16 +197,16 @@
         },
         {
             "name": "cebe/markdown",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/markdown.git",
-                "reference": "54a2c49de31cc44e864ebf0500a35ef21d0010b2"
+                "reference": "c30eb5e01fe021cc5bba2f9ee0eeef96d4931166"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/markdown/zipball/54a2c49de31cc44e864ebf0500a35ef21d0010b2",
-                "reference": "54a2c49de31cc44e864ebf0500a35ef21d0010b2",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/c30eb5e01fe021cc5bba2f9ee0eeef96d4931166",
+                "reference": "c30eb5e01fe021cc5bba2f9ee0eeef96d4931166",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2015-03-06 05:28:07"
+            "time": "2016-09-14 20:40:20"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -346,6 +346,142 @@
                 "browser"
             ],
             "time": "2015-08-26 20:05:14"
+        },
+        {
+            "name": "marciocamello/yii2-paypal",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marciocamello/yii2-paypal.git",
+                "reference": "25361c3f5c443a1054d435f511691c6d5189e997"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marciocamello/yii2-paypal/zipball/25361c3f5c443a1054d435f511691c6d5189e997",
+                "reference": "25361c3f5c443a1054d435f511691c6d5189e997",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "paypal/rest-api-sdk-php": "0.8.*",
+                "php": ">=5.5.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "ak\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Klimenko",
+                    "email": "andrey.iemail@gmail.com"
+                }
+            ],
+            "description": "The PayPal extension for the Yii2 framework",
+            "keywords": [
+                "paypal",
+                "yii2"
+            ],
+            "time": "2014-05-16 16:43:22"
+        },
+        {
+            "name": "paypal/rest-api-sdk-php",
+            "version": "v0.8.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
+                "reference": "87131f964f8a52d220322044cd6f6e6b87cb8f81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/87131f964f8a52d220322044cd6f6e6b87cb8f81",
+                "reference": "87131f964f8a52d220322044cd6f6e6b87cb8f81",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "paypal/sdk-core-php": "2.4.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PayPal": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "PayPal",
+                    "homepage": "https://github.com/paypal/rest-api-sdk-php/contributors"
+                }
+            ],
+            "description": "PayPal's PHP SDK for REST APIs",
+            "homepage": "https://github.com/paypal/rest-api-sdk-php",
+            "keywords": [
+                "payments",
+                "paypal",
+                "rest",
+                "sdk"
+            ],
+            "time": "2014-08-12 15:16:45"
+        },
+        {
+            "name": "paypal/sdk-core-php",
+            "version": "v2.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paypal/sdk-core-php.git",
+                "reference": "226d3492f80847f09c99debb4d3220d5e744ddc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paypal/sdk-core-php/zipball/226d3492f80847f09c99debb4d3220d5e744ddc8",
+                "reference": "226d3492f80847f09c99debb4d3220d5e744ddc8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PayPal": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "PayPal",
+                    "homepage": "https://github.com/paypal/sdk-core-php/contributors"
+                }
+            ],
+            "description": "PayPal Core SDK for PHP",
+            "homepage": "https://github.com/paypal/sdk-core-php",
+            "keywords": [
+                "paypal",
+                "php",
+                "sdk"
+            ],
+            "time": "2013-09-11 14:27:58"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -454,16 +590,16 @@
         },
         {
             "name": "webvimark/date-range-picker",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webvimark/date-range-picker.git",
-                "reference": "4b93d19534ad956c2ae06be0020601ccf8af99fb"
+                "reference": "8bf4129db69b3dccd79987693fae87f5c086faef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webvimark/date-range-picker/zipball/4b93d19534ad956c2ae06be0020601ccf8af99fb",
-                "reference": "4b93d19534ad956c2ae06be0020601ccf8af99fb",
+                "url": "https://api.github.com/repos/webvimark/date-range-picker/zipball/8bf4129db69b3dccd79987693fae87f5c086faef",
+                "reference": "8bf4129db69b3dccd79987693fae87f5c086faef",
                 "shasum": ""
             },
             "type": "library",
@@ -474,20 +610,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "dangrossman daterangepicker yii 2 gridview",
-            "time": "2015-10-06 12:14:43"
+            "time": "2016-10-13 16:08:04"
         },
         {
             "name": "webvimark/grid-bulk-actions",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webvimark/grid-bulk-actions.git",
-                "reference": "b1a28927d9d343922375cdb2b9d073b511fbdd49"
+                "reference": "c15cc98cc926a4ec0537a08d12ed25208c024440"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webvimark/grid-bulk-actions/zipball/b1a28927d9d343922375cdb2b9d073b511fbdd49",
-                "reference": "b1a28927d9d343922375cdb2b9d073b511fbdd49",
+                "url": "https://api.github.com/repos/webvimark/grid-bulk-actions/zipball/c15cc98cc926a4ec0537a08d12ed25208c024440",
+                "reference": "c15cc98cc926a4ec0537a08d12ed25208c024440",
                 "shasum": ""
             },
             "type": "library",
@@ -498,20 +634,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Bulk actions extension for yii 2 gridview",
-            "time": "2015-10-16 07:10:38"
+            "time": "2016-10-25 06:25:33"
         },
         {
             "name": "webvimark/grid-page-size",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webvimark/grid-page-size.git",
-                "reference": "e0e57a7ecd3858625a97d565b0f9582d83da7e9a"
+                "reference": "cb0163614e34ebb0319ef436da6db755f30546d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webvimark/grid-page-size/zipball/e0e57a7ecd3858625a97d565b0f9582d83da7e9a",
-                "reference": "e0e57a7ecd3858625a97d565b0f9582d83da7e9a",
+                "url": "https://api.github.com/repos/webvimark/grid-page-size/zipball/cb0163614e34ebb0319ef436da6db755f30546d2",
+                "reference": "cb0163614e34ebb0319ef436da6db755f30546d2",
                 "shasum": ""
             },
             "type": "library",
@@ -522,20 +658,20 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Grid page size extension for yii 2 gridview",
-            "time": "2015-10-26 16:13:58"
+            "time": "2016-10-25 06:28:39"
         },
         {
             "name": "webvimark/helpers",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webvimark/helpers.git",
-                "reference": "f3f1d8752a6bd3221b6e9fd9db6948676d3e2e66"
+                "reference": "7bb59438d50149cec8233f3b509dd686200ea567"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webvimark/helpers/zipball/f3f1d8752a6bd3221b6e9fd9db6948676d3e2e66",
-                "reference": "f3f1d8752a6bd3221b6e9fd9db6948676d3e2e66",
+                "url": "https://api.github.com/repos/webvimark/helpers/zipball/7bb59438d50149cec8233f3b509dd686200ea567",
+                "reference": "7bb59438d50149cec8233f3b509dd686200ea567",
                 "shasum": ""
             },
             "type": "library",
@@ -546,7 +682,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Helpers for yii 2",
-            "time": "2015-09-13 16:37:28"
+            "time": "2016-10-03 08:50:29"
         },
         {
             "name": "webvimark/image",
@@ -607,16 +743,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.9",
+            "version": "2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "2b75151ea60e1fd820046416eee2e89c3dda1133"
+                "reference": "5bfcb7a6dfa9771e2248eb8c4448613330f343ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2b75151ea60e1fd820046416eee2e89c3dda1133",
-                "reference": "2b75151ea60e1fd820046416eee2e89c3dda1133",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/5bfcb7a6dfa9771e2248eb8c4448613330f343ff",
+                "reference": "5bfcb7a6dfa9771e2248eb8c4448613330f343ff",
                 "shasum": ""
             },
             "require": {
@@ -697,7 +833,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-07-11 13:36:42"
+            "time": "2016-10-20 12:02:50"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -798,21 +934,21 @@
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "e2c6315caff30a9271a7afad4d684627721dc69a"
+                "reference": "26b900767f1031ff3a4668dfa36c10595875f0a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/e2c6315caff30a9271a7afad4d684627721dc69a",
-                "reference": "e2c6315caff30a9271a7afad4d684627721dc69a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/26b900767f1031ff3a4668dfa36c10595875f0a5",
+                "reference": "26b900767f1031ff3a4668dfa36c10595875f0a5",
                 "shasum": ""
             },
             "require": {
                 "swiftmailer/swiftmailer": "~5.0",
-                "yiisoft/yii2": ">=2.0.4"
+                "yiisoft/yii2": "~2.0.4"
             },
             "type": "yii2-extension",
             "extra": {
@@ -844,7 +980,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2016-03-17 03:58:49"
+            "time": "2016-09-09 11:48:11"
         }
     ],
     "packages-dev": [
@@ -1004,6 +1140,7 @@
                 "codeception",
                 "yii2"
             ],
+            "abandoned": "codeception/codeception",
             "time": "2016-03-17 03:41:26"
         },
         {

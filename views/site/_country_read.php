@@ -1,29 +1,27 @@
 <?php
 
+/* @var $this yii\web\View */
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use app\components\HelloWidget;
+use \webvimark\modules\UserManagement\models\User;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Country */
-
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['index']];
+$this->title = 'Country';
+$this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['indexcountry']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="country-view">
-
+<div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= User::canRoute('/site/updatecountry') ? Html::a('Update', ['updatecountry', 'id' => $model->id], ['class' => 'btn btn-primary']) : null ?>
+        <?= User::canRoute('/site/updatecountry') ? Html::a('Delete', ['deletecountry', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) : null ?>
     </p>
 
     <?= DetailView::widget([
@@ -36,5 +34,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-    <?= HelloWidget::widget() ?>
 </div>
