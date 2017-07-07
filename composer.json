@@ -19,14 +19,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "webvimark/module-user-management": "1.0.7",
-        "marciocamello/yii2-paypal": "*",
-        "authorizenet/authorizenet": "1.8.9",
-        "jms/serializer": "serializer-master-dev as 1.0"
+        "marciocamello/yii2-paypal": "*"
     },
-    "repositories": [{
-        "type": "vcs",
-        "url": "https://github.com/goetas/serializer.git"
-    }],
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
